@@ -1,0 +1,20 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: potedepringles-tv-tls
+spec:
+  secretName: potedepringles-tv-tls
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: potedepringles.tv
+  dnsNames:
+    - potedepringles.tv
+    - www.potedepringles.tv
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - potedeprignles.tv
+          - www.potedepringles.tv
